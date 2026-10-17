@@ -55,7 +55,9 @@ builder.add_edge("llm_node", "output_node")
 builder.add_edge("output_node", END)
 
 # 定义并在编译时传递 Checkpointer
-DB_URL = "postgresql://langgraph_user:123456@localhost:5432/langgraph_db?sslmode=disable"
+#DB_URL = "postgresql://langgraph_user:123456@localhost:5432/langgraph_db?sslmode=disable"
+DB_URL = "postgresql://postgres:123456@localhost:5433/langgraph_db?sslmode=disable"
+
 with PostgresSaver.from_conn_string(DB_URL) as checkpointer:
     # 示例中为了方便演示直接调用 setup()
     # 实际项目中通常建议把数据库初始化/迁移作为独立步骤处理
